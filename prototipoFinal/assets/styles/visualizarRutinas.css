@@ -1,0 +1,386 @@
+@import 'bootstrap';
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+html {
+    position: relative;
+    min-height: 100vh;
+}
+.contenedora {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 4.5em;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    background-color: transparent;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.6); 
+    border: 1px solid #494949;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+}
+
+.card p {
+    margin-bottom: 10px;
+}
+
+.opciones {
+    border: 1px solid #ccc;
+    width: 140px!important;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgba(44, 52, 54);
+}
+
+
+button {
+    background-color: white;
+    padding: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    border-radius: 7px;
+    color: #000;
+    border: solid 2px black;
+    margin-bottom: 10px;
+    min-width: 156px;
+}
+
+.filtro {
+    background-color: rgba(0, 0, 0, 0.7); 
+    border: 1px solid #494949;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.config {
+    position: relative;
+    right: 59px;
+}
+.applyBtn{
+    background-color: white;
+    color: black;
+    border: 0px;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+
+@media (min-width:1200px) {
+    .card {
+        min-height: 480px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1200px) {
+    .card {
+        min-height: 440px;
+    }
+}
+
+@media (max-width:992px) {
+    .card {
+        min-height: 410px;
+    }
+}
+
+@media (min-width:992px) {
+    .bajar {
+        position: relative;
+        top: 13px;
+    }
+}
+
+@media (min-width:3200px) {
+    .imagenLogo {
+        position: relative;
+        right: 2000px;
+    }
+}
+
+@media (max-width:3200px) and (min-width:2900px) {
+    .imagenLogo {
+        position: relative;
+        right: 1900px;
+    }
+}
+
+@media (max-width:2900px) and (min-width:2700px) {
+    .imagenLogo {
+        position: relative;
+        right: 1700px;
+    }
+}
+
+@media (max-width:2700px) and (min-width:2500px) {
+    .imagenLogo {
+        position: relative;
+        right: 1600px;
+    }
+    
+}
+
+@media (max-width:2500px) and (min-width:2300px) {
+    .imagenLogo {
+        position: relative;
+        right: 1250px;
+    }
+}
+
+@media (max-width:2300px) and (min-width:2000px) {
+    .imagenLogo {
+        position: relative;
+        right: 900px;
+    }
+    ul{
+        position: relative;
+        right: 0px;
+    }
+}
+
+@media (max-width:2000px) and (min-width:1800px) {
+    .imagenLogo {
+        position: relative;
+        right: 900px;
+    }
+    ul{
+        position: relative;
+        left: 50px;
+    }
+}
+
+@media (max-width:1800px) and (min-width:1600px) {
+    .imagenLogo {
+        position: relative;
+        right: 800px;
+    }
+
+    .navbar-nav {
+        position: relative;
+        left: 0px;
+    }
+}
+
+@media (max-width:1600px) and (min-width:1410px) {
+    .imagenLogo {
+        position: relative;
+        right: 650px;
+    }
+    ul{
+        position: relative;
+        left: 80px;
+    }
+}
+
+
+@media (max-width:1410px) and (min-width:1310px) {
+    .imagenLogo {
+        position: relative;
+        right: 550px;
+    }
+    ul{
+        position: relative;
+        left: 80px;
+    }
+}
+
+@media (max-width:1310px) and (min-width:1200px) {
+    .imagenLogo {
+        position: relative;
+        right: 450px;
+    }
+    ul{
+        position: relative;
+        left: 60px;
+    }
+
+}
+
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+@media (max-width:1200px) {
+    .imagenLogo {
+        display: none;
+    }
+    .home{
+        display: inline!important;
+    }
+}
+
+@media (min-width:1200px) {
+
+    .nav-link{
+        font-size: large!important;
+    }
+
+    .imagenLogo {
+        max-width: 100px;
+    }
+
+    .contenedora {
+        position: relative;
+        min-height: 100vh;
+        padding-bottom: 6.5em;
+    }
+}
+
+.opciones {
+    width: 120px;
+    position: relative;
+    right: 120px;
+}
+
+.config {
+    width: 50%;
+}
+
+/*Pequeno*/
+
+@media (max-width:1200px) and (min-width:1140px) {
+    .config{
+        position: relative;
+        right: 270px;
+    }
+    .opciones{
+       position: relative;
+        right: 520px; 
+    }
+
+}
+
+@media (max-width:1140px) and (min-width:1040px) {
+    .config{
+        position: relative;
+        right: 240px;
+    }
+    .opciones{
+       position: relative;
+        right: 470px; 
+    }
+
+}
+
+@media (max-width:1040px) and (min-width:940px) {
+    .config{
+        position: relative;
+        right: 220px;
+    }
+    .opciones{
+       position: relative;
+        right: 420px; 
+    }
+
+}
+
+@media (max-width:940px) and (min-width:840px) {
+    .config{
+        position: relative;
+        right: 200px;
+    }
+    .opciones{
+       position: relative;
+        right: 380px; 
+    }
+
+}
+
+@media (max-width:840px) and (min-width:740px) {
+    .config{
+        position: relative;
+        right: 180px;
+    }
+    .opciones{
+       position: relative;
+        
+    }
+
+}
+
+@media (max-width:840px) and (min-width:740px) {
+    .config{
+        position: relative;
+        right: 170px;
+    }
+    .opciones{
+       position: relative;
+        right:320px; 
+    }
+
+}
+
+@media (max-width:740px) and (min-width:640px) {
+    .config{
+        position: relative;
+        right: 140px;
+    }
+    .opciones{
+       position: relative;
+        right: 250px; 
+    }
+
+}
+
+@media (max-width:640px) and (min-width:540px) {
+    .config{
+        position: relative;
+        right: 120px;
+    }
+    .opciones{
+       position: relative;
+        right: 210px; 
+    }
+
+}
+
+
+@media (max-width:540px) and (min-width:440px) {
+    .config{
+        position: relative;
+        right: 90px;
+    }
+    .opciones{
+       position: relative;
+        right: 160px; 
+    }
+
+}
+
+@media (max-width:440px) and (min-width:320px) {
+    .config{
+        position: relative;
+        right: 70px;
+    }
+    .opciones{
+       position: relative;
+        right: 110px; 
+        width: 120px;
+    }
+
+}

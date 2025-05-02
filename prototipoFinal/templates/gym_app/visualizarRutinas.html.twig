@@ -1,0 +1,241 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('visualizarRutinas') }}
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('visualizarRutinas') }}
+{% endblock %}
+{% block title %}
+	Visualizar Rutinas
+{% endblock %}
+
+{% block body %}
+	<style>
+		.contenedora {
+			background-image: url('/img/fondoOscuro.jpg');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+	</style>
+
+	<div class="contenedora">
+		<nav class="navbar navbar-expand-xl" style="padding:10px;font-size:20px;min-height:130px;">
+			<div class="container-fluid">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+					<ul class="navbar-nav align-items-xl-center">
+						<li class="nav-item logoCentral">
+							<a class="nav-link text-xl-start text-sm-center linkLogo" href="{{ path('app_gym',{userName:userName}) }}"><img class="imagenLogo" src="/img/gymLogo.jpg"></img>
+						</li>
+					</a>
+				</li>
+				<li class="nav-item home" style="display:none;">
+					<a class="nav-link" href="{{ path('app_gym',{userName:userName}) }}" style="color:white;font-weight:bold;">Home</a>
+				</li>
+				<li class="nav-item rutinaActual">
+					<a class="nav-link" href="{{ path('mostrarRutinaActual',{userName:userName}) }}" style="color:white;font-weight:bold;">Rutina actual</a>
+				</li>
+				<li class="nav-item visualizarRutinas">
+					<a class="nav-link" href="{{ path('visualizarRutinas',{userName:userName}) }}" style="color:white;font-weight:bold;">Visualizar Rutinas</a>
+				</li>
+				<li class="nav-item cerrarSesion">
+					<a class="nav-link" href="{{ path('logout') }}" style="color:white;font-weight:bold;">Cerrar sesión</a>
+				</li>
+				<li class="nav-item options">
+					<div class=" pt-2">
+						<button class="config" id="{{ isAdmin ? 'admin' : 'not_admin' }}" style="border:0px;background-color:transparent!important;" hidden>⚙️</button>
+						<select onchange="window.location.href=this.value;" class="opciones" style="border:solid 1px black;visibility:hidden;">
+							<option>Seleccione...</option>
+							<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Actualizar usuarios</option>
+							<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Borrar usuarios</option>
+							<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nuevo ejercicio</option>
+							<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nueva máquina</option>
+						</select>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+<div class="container">
+	<h1 style="color: white;margin-top:20px;margin-bottom:20px;">Historial de rutinas</h1>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+
+	<script>
+		// Obtener date picker
+$(document).ready(function () {
+$('#datepicker').daterangepicker({
+locale: {
+format: 'DD/MM/YYYY'
+}
+});
+
+$("#get-date").click(function () {
+let dateRange = $('#datepicker').data('daterangepicker');
+let startDate = dateRange.startDate;
+let endDate = dateRange.endDate;
+let maquinas = $(".maquinas option:selected").text();
+let musculos = $(".musculos option:selected").text();
+
+if (startDate != null && endDate != null) {
+let formattedStartDate = startDate.format('DD/MM/YYYY');
+let formattedEndDate = endDate.format('DD/MM/YYYY');
+
+$(".date").each((index, e) => {
+let row = $(".row").eq(index);
+let date = $(e).text();
+let momentDate = moment(date, 'DD/MM/YYYY');
+
+if (momentDate.isBefore(startDate) || momentDate.isAfter(endDate)) {
+row.css("display", "none");
+$(e).css("display", "none");
+} else {
+row.css("display", "");
+$(e).css("display", "");
+}
+});
+} else {
+alert("No se ha seleccionado ningún rango de fechas.");
+}
+});
+// Filtra por múculo
+$("#fmu").click(function (event) {
+event.preventDefault();
+$("#datepicker").val("");
+let musculo = $(".musculos option:selected").text();
+$(".dias").each((index, e) => {
+let row = $(".row").eq(index);
+let date = $(".date").eq(index);
+let i = 0;
+$(e).find(".mu").each((index, e2) => {
+if ($(e2).text() == musculo) {
+i++;
+}
+});
+if (i == 0) {
+row.css("display", "none");
+date.css("display", "none");
+} else {
+row.css("display", "");
+date.css("display", "");
+} i = 0;
+});
+});
+// Filtra por máquina
+$("#fma").click(function (event) {
+event.preventDefault();
+$("#datepicker").val("");
+let maquina = $(".maquinas option:selected").text();
+$(".dias").each((index, e) => {
+let row = $(".row").eq(index);
+let date = $(".date").eq(index);
+let i = 0;
+$(e).find(".ma").each((index, e2) => {
+if ($(e2).text() == maquina) {
+i++;
+}
+});
+if (i == 0) {
+row.css("display", "none");
+date.css("display", "none");
+} else {
+row.css("display", "");
+date.css("display", "");
+} i = 0;
+});
+});
+$("#todo").click(function (event) {
+event.preventDefault();
+$("#datepicker").val("");
+$(".dias").each((index, e) => {
+let row = $(".row").eq(index);
+let date = $(".date").eq(index);
+row.css("display", "");
+date.css("display", "");
+});
+});
+});
+	</script>
+	<p class="text-center">
+		<button class="btnFiltro">Filtros</button>
+	</p>
+	<div
+		class="filtro" style="display:none;">
+		<!-- Filtrar por fecha-->
+		<p style="margin-bottom:0px;text-align:center;"><input style="width: calc(40% - 22px);padding: 8px; border-radius: 5px; border: 1px solid #ccc;" type="text" id="datepicker" placeholder="Seleccione fecha clickando"><button id="get-date" style="margin-left:4.5px;">Obtener Fecha</button>
+		</p>
+		<!-- Filtrar por máquina-->
+		{{form_start(form2)}}
+		<div style="text-align:center;">
+			{{ form_widget(form2.maquina, {'attr': {'style': 'width: calc(40% - 22px); padding: 8px; border-radius: 5px; border: 1px solid #ccc;', 'class': 'maquinas'}}) }}
+			<button id="fma">Filtrar por máquina</button>
+		</div>
+		{{form_end(form2)}}
+		<!-- Filtrar por músculo-->
+		{{form_start(form1)}}
+		<div style="text-align:center;">
+			{{ form_widget(form1.grupoMuscular, {'attr': {'style': 'width: calc(40% - 22px); padding: 8px; border-radius: 5px; border: 1px solid #ccc;', 'class': 'musculos'}}) }}
+			<button id="fmu">Filtrar por músculo</button>
+		</div>
+		{{form_end(form1)}}
+		<!-- Mostar todo-->
+		<p class="text-center">
+			<button id="todo">Mostrar todo</button>
+		</p>
+	</div>
+	{% set num = 0 %}
+	{% for d in detallesRutina %}
+		<h2 class="date text-center" style="color: white; border-bottom: solid 1px white; margin-bottom: 25px">{{ rutinas[num].fechaCreacion|date("d-m-Y") }}</h2>
+		<div class="row dias">
+			{% for d2 in d %}
+				<div class="col-6 col-lg-4 ">
+					<div class="card">
+						<h3 style="color:white;">{{ d2.ejercicio.nombreEjercicio }}</h3>
+						<p style="color:white;">{{ d2.ejercicio.descripcion }}</p>
+						<p style="color:white;">
+							<span style="font-weight:bold;color:white;">Maquina:</span>
+							<span class="ma">{{ d2.ejercicio.maquina.nombre }}</span>
+						</p>
+						<p style="color:white;">
+							<span style="font-weight:bold;color:white;">Grupo Muscular:</span>
+							<span class="mu">{{ d2.ejercicio.grupoMuscular.nombre }}</span>
+						</p>
+						<p style="color:white;">
+							<span style="font-weight:bold;color:white;">Peso:</span>
+							{{ d2.peso }}</p>
+						<p style="color:white;">
+							<span style="font-weight:bold;color:white;">Series:</span>
+							{{ d2.series }}</p>
+						<p style="color:white;">
+							<span style="font-weight:bold;color:white;">Repeticiones por Serie:</span>
+							{{ d2.repeticionesPorSerie }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		{% set num = num + 1 %}
+	{% endfor %}
+</div>
+
+<div class="footer">
+	<div class="row">
+		<div class="row pt-2 pb-2 justify-content-center">
+			<div class="col-3 text-center">
+				<a href=""><img src="/img/instagramF.png" class="col-3" style="max-width:50px;min-width:40px;"></a>
+			</div>
+			<div class="col-3 text-center"></div>
+			<div class="col-3 text-center">
+				<a href="https://x.com/gymWorkoutSpain"><img src="/img/twitterF.png" class="col-3" style="max-width:50px;min-width:40px;"></a>
+			</div>
+		</div>
+	</div>
+</div></div>{% endblock %}

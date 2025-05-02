@@ -1,0 +1,37 @@
+@import 'bootstrap';
+
+.registroContenedor{
+    background-color: rgba(44, 52, 54, 0.7);
+    margin-top: 8%;
+    width: 450px;
+    height: 400px;
+}
+.email{
+    background-color: transparent;
+    border-top: solid 0px ;
+    border-left:solid 0px ;
+    border-right:solid 0px ;
+    border-bottom: solid 0.2px yellow;
+    margin-top: 5%;
+}
+.password{
+    background-color: transparent;
+    border-top: solid 0px ;
+    border-left:solid 0px ;
+    border-right:solid 0px ;
+    border-bottom: solid 0.2px rgb(255, 255, 255);
+    margin-top: 5%;
+}
+.buttonLogin{
+    background-color: yellow;
+    border-radius: 5px;
+    width: 50%;
+    margin-top: 10%;
+    margin-left: 25%;
+}
+.logo{
+    width: 80px;
+    position: relative;
+    bottom:25px;
+    margin: 0px;
+}

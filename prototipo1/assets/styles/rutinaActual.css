@@ -1,0 +1,51 @@
+@import 'bootstrap';
+
+body {
+    background-color: black;
+}
+
+h1 {
+    color: yellow;
+    text-align: center;
+    margin-top: 25px;
+}
+
+ .card {
+        border: solid 2px #00008B;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px;
+        background-color: #f8f9fa;
+    }
+
+    .card p {
+        color: #000;
+        margin-bottom: 5px;
+    }
+
+    .card h3 {
+        color: #00008B; 
+        font-size: 24px; 
+        margin-bottom: 10px; 
+    }
+
+    .card img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    .finalizarRutina {
+        background-color: yellow;
+        padding: 5px;
+        margin-top: 10px;
+        font-weight: bold;
+        border-radius: 7px;
+        color: #000;
+        border: none;
+    }
+
+    .finalizarRutina:hover {
+        background-color: #FFFF00;
+    }

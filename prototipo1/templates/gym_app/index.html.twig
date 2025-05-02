@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('index') }}
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('index') }}
+{% endblock %}
+{% block title %}
+	Grupos Musculares
+{% endblock %}
+
+{% block body %}
+	<nav class="nav">
+		<a class="nav-link active" aria-current="page" href="{{ path('app_gym',{userName:userName}) }}" style="color:yellow">Home</a>
+		<a class="nav-link" href="{{ path('mostrarRutinaActual',{userName:userName}) }}" style="color:yellow">Rutina actual</a>
+		<a class="nav-link" href="{{ path('visualizarRutinas',{userName:userName}) }}" style="color:yellow">Visualizar Rutinas</a>
+		<a class="nav-link" href="{{ path('logout') }}" style="color:yellow">Cerrar sesión</a>
+		<div class=" pt-2">
+			<button class="config" id="{{ isAdmin ? 'admin' : 'not_admin' }}" style="background-color:transparent;border:0px">⚙️</button>
+			<select onchange="window.location.href=this.value;" hidden class="opciones" style="border:0px">
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}" >Añadir nuevo administrador</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}" >Borrar usuarios</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}" >Actualizar usuarios</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}" >Añadir nuevo ejercicio</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}" >Añadir nueva máquina</option>
+			</select>
+		</div>
+	</nav>
+
+	<h1 style="color:yellow" class="text-center pt-5 pb-4">Grupos Musculares</h1>
+	<div class="container">
+		<div class="musculos row g-5">
+			{% for grupo in grupos %}
+				<div class="col-md-3 col-6">
+					<a href="{{ path('seleccionarEjercicio',{nombre:grupo.nombre,userName:userName}) }}"><img src="/img/{{grupo.imagen}}" class="col-12"></a>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

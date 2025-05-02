@@ -1,0 +1,23 @@
+@import 'bootstrap';
+body{
+    background-color: black;
+}
+.card {
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .card h3 {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #00008B;
+        border-bottom: 1px solid #00008B;
+        padding-bottom: 5px;
+    }
+
+    .card p {
+        margin-bottom: 10px; 
+    }

@@ -1,0 +1,32 @@
+@import 'bootstrap';
+
+body {
+    background-color: white;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;
+}
+
+.opciones {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgba(44, 52, 54);
+
+}
+
+.footer {
+    background-color: #ced3ff;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 700;
+    background: linear-gradient(45deg, #7967f1, #00bfff, #ced3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}

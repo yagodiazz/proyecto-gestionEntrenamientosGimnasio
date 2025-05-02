@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('ejercicios') }}
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('ejercicios') }}
+{% endblock %}
+{% block title %}
+	Ejercicios
+{% endblock %}
+
+{% block body %}
+	<nav class="nav p-2">
+		<a class="nav-link active" aria-current="page" href="{{ path('app_gym',{userName:userName}) }}" style="color:yellow">Home</a>
+		<a class="nav-link" href="{{ path('mostrarRutinaActual',{userName:userName}) }}" style="color:yellow">Rutina actual</a>
+		<a class="nav-link" href="{{ path('visualizarRutinas',{userName:userName}) }}" style="color:yellow">Visualizar Rutinas</a>
+		<a class="nav-link" href="{{ path('logout') }}" style="color:yellow">Cerrar sesión</a>
+		<div class=" pt-2">
+			<button class="config" id="{{ isAdmin ? 'admin' : 'not_admin' }}" style="background-color:transparent;border:0px">⚙️</button>
+			<select onchange="window.location.href=this.value;" hidden class="opciones" style="border:0px">
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Añadir nuevo administrador</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Borrar usuarios</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Actualizar usuarios</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nuevo ejercicio</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nueva máquina</option>
+			</select>
+		</div>
+	</nav>
+
+	<nav class="text-center pt-4 pb-4">
+		<input type="text" placeholder="Buscar ejercicio" class="buscar ">
+	</nav>
+	<!--No tocar js-->
+	<div class="container">
+		<div class="ejercicios row">
+			{% for ejercicio in ejercicios %}
+				<div class="ejercicio col-md-6 col-12">
+					<a href="{{ path('addEjercicioRutina',{nombre:ejercicio.nombreEjercicio,userName:userName}) }}">{{ejercicio.nombreEjercicio}}:</a>
+					<span style="color:white">{{ejercicio.descripcion}}</span>
+					<span><img src="/img/{{ejercicio.maquina.imagen}}" class="col-12" alt="img"></span>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

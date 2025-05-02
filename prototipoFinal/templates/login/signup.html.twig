@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('signUp') }}
+{% endblock %}
+{% block title %}
+	Add user
+{% endblock %}
+{% block body %}
+<body style="background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{ asset('./img/bgLogin.jpg') }}'); background-repeat: no-repeat; background-size: cover;background-attachment:fixed; opacity:0.9;height:100%">
+	<div class="container registroContenedor">
+		{{form_start(form, {'attr': {'class': 'row justify-content-center'}})}}
+		<img class="logo text-center" src="./img/gymLogo.jpg"></img>
+		<h1 class="mb-3 font-weight-normal text-center text-white mt-4">Registrate</h1>
+		<div class="col-12 text-center">
+			{{ form_label(form.email, '',{'label_attr':{'style': 'color: transparent;width:0px'}})
+			}}
+
+			{{ form_widget(form.email, {'attr': { 'class': 'email col-8','placeholder': 'Email'}}) }}
+		</div>
+		<div class="col-12 text-center">
+			{{ form_label(form.password, '', {'label_attr': {'style': 'color: transparent;width:0px'}, }) }}
+
+			{{ form_widget(form.password, {'attr': {'class': 'password col-8','placeholder': 'Password'}})}}
+		</div>
+		{{form_end(form)}}
+	</div>
+</body>
+{% endblock %}

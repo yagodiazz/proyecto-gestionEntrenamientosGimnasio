@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('material') }}
+{% endblock %}
+{% block title %}
+	AddMaterial
+{% endblock %}
+{% block body %}
+	<nav class="nav">
+		<a class="nav-link active" aria-current="page" href="{{ path('app_gym',{userName:userName}) }}" style="color:yellow">Home</a>
+		<a class="nav-link" href="{{ path('mostrarRutinaActual',{userName:userName}) }}" style="color:yellow">Rutina actual</a>
+		<a class="nav-link" href="{{ path('visualizarRutinas',{userName:userName}) }}" style="color:yellow">Visualizar Rutinas</a>
+		<a class="nav-link" href="{{ path('logout') }}" style="color:yellow">Cerrar sesión</a>
+		<div class=" pt-2">
+			<button class="config" id="{{ isAdmin ? 'admin' : 'not_admin' }}" style="background-color:transparent;border:0px">⚙️</button>
+			<select onchange="window.location.href=this.value;" hidden class="opciones" style="border:0px">
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}" >Añadir nuevo administrador</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}" >Borrar usuarios</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}" >Actualizar usuarios</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}" >Añadir nuevo ejercicio</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}" >Añadir nueva máquina</option>
+			</select>
+		</div>
+	</nav>
+	<div class="container">
+		{{form_start(form1)}}
+		<div>
+			{{ form_label(form1.nombreEjercicio, 'Introduce el nombre')
+			}}
+
+			{{ form_widget(form1.nombreEjercicio)}}
+		</div>
+		<div>
+			{{ form_label(form1.descripcion, 'Introduce la descripción',) }}
+
+
+			{{ form_widget(form1.descripcion)}}
+		</div>
+		<div>
+			{{ form_label(form1.grupoMuscular, 'Introduzca el grupo muscular',)
+			}}
+
+			{{ form_widget(form1.grupoMuscular)}}
+		</div>
+        <div>
+			{{ form_label(form1.maquina, 'Introduzca la máquina',)
+			}}
+
+			{{ form_widget(form1.maquina)}}
+		</div>
+        
+		{{form_end(form1)}}
+
+        {{form_start(form2)}}
+		<div>
+			{{ form_label(form2.nombre, 'Introduce el nombre')
+									}}
+
+			{{ form_widget(form2.nombre)}}
+		</div>
+		<div>
+			{{ form_label(form2.marca, 'Introduce la marca') }}
+
+
+			{{ form_widget(form2.marca)}}
+		</div>
+		<div>
+			{{ form_label(form2.imagen, 'Introduzca número de repeticiones por serie',)
+			}}
+
+			{{ form_widget(form2.imagen)}}
+		</div>
+		{{form_end(form2)}}
+	</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('visualizarRutinas') }}
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('visualizarRutinas') }}
+{% endblock %}
+{% block title %}
+	Visualizar Rutinas
+{% endblock %}
+
+{% block body %}
+	<nav class="nav">
+		<a class="nav-link active" aria-current="page" href="{{ path('app_gym',{userName:userName}) }}" style="color:yellow">Home</a>
+		<a class="nav-link" href="{{ path('mostrarRutinaActual',{userName:userName}) }}" style="color:yellow">Rutina actual</a>
+		<a class="nav-link" href="{{ path('visualizarRutinas',{userName:userName}) }}" style="color:yellow">Visualizar Rutinas</a>
+		<a class="nav-link" href="{{ path('logout') }}" style="color:yellow">Cerrar sesión</a>
+		<div class=" pt-2">
+			<button class="config" id="{{ isAdmin ? 'admin' : 'not_admin' }}" style="background-color:transparent;border:0px">⚙️</button>
+			<select onchange="window.location.href=this.value;" hidden class="opciones" style="border:0px">
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Añadir nuevo administrador</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Borrar usuarios</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Actualizar usuarios</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nuevo ejercicio</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nueva máquina</option>
+			</select>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1 style="color: yellow">Rutinas:</h1>
+		{% set num = 0 %}
+		{% for d in detallesRutina %}
+			<h2 style="color: white; border-bottom: solid 1px #00008B; margin-bottom: 25px">{{ rutinas[num].fechaCreacion|date("d/m/Y") }}</h2>
+			<div class="row">
+				{% for d2 in d %}
+					<div class="col-6 col-md-4">
+						<div class="card">
+							<h3>{{ d2.ejercicio.nombreEjercicio }}</h3>
+							<p>{{ d2.ejercicio.descripcion }}</p>
+							<p><span style="font-weight:bold">Maquina:</span>
+								{{ d2.ejercicio.maquina.nombre }}</p>
+							<p><span style="font-weight:bold">Grupo Muscular:</span>
+								{{ d2.ejercicio.grupoMuscular.nombre }}</p>
+							<p><span style="font-weight:bold">Peso:</span>
+								{{ d2.peso }}</p>
+							<p><span style="font-weight:bold">Series:</span>
+								{{ d2.series }}</p>
+							<p><span style="font-weight:bold">Repeticiones por Serie:</span>
+								{{ d2.repeticionesPorSerie }}</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			{% set num = num + 1 %}
+		{% endfor %}
+	</div>
+
+{% endblock %}

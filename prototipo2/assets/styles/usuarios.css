@@ -1,0 +1,93 @@
+@import 'bootstrap';
+body{
+    background-color: white;
+}
+html{
+    height: 100%;
+    margin-bottom: 500px;
+}
+.opciones {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:  rgb(255, 255, 255);
+    color: rgba(44, 52, 54);
+}
+ 
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+.formulario {
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    background-color: #f8f9fa;
+    width: 300px;
+    max-width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.formulario input[type="text"],
+.formulario input[type="password"],
+.formulario select {
+    color: black; 
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    width: calc(100% - 22px);
+    box-sizing: border-box; 
+}
+.formulario h2 {
+    color: black; 
+    font-size: 24px; 
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.formulario img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.finalizarRutina {
+    background-color: white;
+    padding: 10px;
+    margin-top: 15px;
+    font-weight: bold;
+    border-radius: 7px;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+}
+
+
+.opciones:hover {
+    background-color: #dfe6e9;
+}
+
+label{
+    padding: 5px;
+}
+
+.footer{
+    background-color:#ced3ff;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 50px;
+    font-weight: 700;
+    background: linear-gradient(45deg, #7967f1, #00bfff, #ced3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+

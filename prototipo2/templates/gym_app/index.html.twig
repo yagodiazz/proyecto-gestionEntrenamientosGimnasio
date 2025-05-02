@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('index') }}
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('index') }}
+{% endblock %}
+{% block title %}
+	Grupos Musculares
+{% endblock %}
+
+{% block body %}
+
+	<nav class="navbar navbar-expand-lg" style="padding:10px;font-size:20px;border:solid 1px grey;border-right:0px;border-top:0px;border-left:0px;background-color:#ced3ff">
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="{{ path('app_gym',{userName:userName}) }}" style="color:black">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('mostrarRutinaActual',{userName:userName}) }}" style="color:black">Rutina actual</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('visualizarRutinas',{userName:userName}) }}" style="color:black">Visualizar Rutinas</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('logout') }}" style="color:black">Cerrar sesión</a>
+					</li>
+					<li class="nav-item">
+						<div class=" pt-2">
+							<button class="config" id="{{ isAdmin ? 'admin' : 'not_admin' }}" style="background-color:transparent;border:0px" hidden>⚙️</button>
+							<select onchange="window.location.href=this.value;" class="opciones" style="border:solid 1px black;" hidden>
+								<option>Seleccione...</option>
+								<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Actualizar usuarios</option>
+								<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Borrar usuarios</option>
+								<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nuevo ejercicio</option>
+								<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nueva máquina</option>
+							</select>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1 class="text-center pt-5 ">Grupos Musculares</h1>
+		<div class="musculos row g-5 mt-3">
+			{% for grupo in grupos %}
+				<div class="col-lg-3 col-md-6 col-12">
+					<a href="{{ path('seleccionarEjercicio',{nombre:grupo.nombre,userName:userName}) }}"><img src="/img/{{grupo.imagen}}" class="col-12 imgEj"></a>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="footer" style="position:fixed;bottom:0;width:100%;margin-top:20px;">
+		<div class="row">
+			<div class="row pt-2 pb-2 justify-content-center">
+				<div class="col-3 text-center">
+					<a href=""><img src="/img/instagram.png" class="col-3" style="max-width:50px"></a>
+				</div>
+				<div class="col-3 text-center">
+				</div>
+				<div class="col-3 text-center">
+					<a href="https://x.com/gymWorkoutSpain"><img src="/img/twitter.png" class="col-3" style="max-width:50px"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('login') }}
+{% endblock %}
+{% block title %}
+	Log In!
+{% endblock %}
+{% block body %}
+	<body style="background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{ asset('./img/bgLogin.jpg') }}'); background-repeat: no-repeat; background-size: cover;background-attachment:fixed; opacity:0.9;height:100%">
+		<div class="container registroContenedor">
+			<div class="login-form mt-4 p-4">
+				<form method="post" class="row g-3 justify-content-center">
+					<img class="logo" src="./img/logo2.png"></img>
+					<h1 class="mb-3 font-weight-normal text-center text-white">Bienvenido!</h1>
+					<div class="col-12 text-center ">
+						<input type="email" class="email col-8" name="email" id="inputEmail" required autofocus placeholder="Email">
+					</div>
+					<div class="col-12 text-center">
+						<input type="password" class="password col-8" name="password" id="inputPassword" placeholder="Password" required>
+					</div>
+					<div class="col-8 text-center">
+						<button class="buttonLogin col-12" type="submit">
+							LOGIN
+						</button>
+					</div>
+					<div class="col-12 text-center">
+						<button class="col-8 btnRegistrate">
+							<a class="text-decoration-none text-white" href="{{ path('signup')}}">Regístrate</a>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+{% endblock %}

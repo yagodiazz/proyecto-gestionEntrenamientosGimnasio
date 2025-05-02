@@ -1,0 +1,15 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+obtener_datos_sesion:
+    path: '/obtener-datos-sesion'
+    controller: 'App\Controller\GymAppController::obtenerDatosSesion'
+    methods: ['GET']
+    
+actualizar_datos_sesion:
+    path: '/actualizar-datos-sesion'
+    controller: 'App\Controller\GymAppController::actualizarDatosSesion'
+    methods: ['POST']

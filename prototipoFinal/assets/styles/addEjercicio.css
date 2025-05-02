@@ -1,0 +1,181 @@
+@import 'bootstrap';
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+html {
+    position: relative;
+    min-height: 100vh;
+}
+
+.contenedora {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 2em;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    background-color: transparent;
+}
+input{
+    margin-bottom: 25px;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.6); 
+    border: 1px solid #494949;
+    border-radius:5px;
+    padding:15px;
+    margin-right:25px;
+    margin-bottom:25px;
+    min-height:300px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.formAdd div{
+    text-align: left;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 700;
+    color:white;
+    text-align: center;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+
+
+@media (min-width:3200px) {
+    .imagenLogo {
+        position: relative;
+        right: 2200px;
+    }
+}
+
+@media (max-width:3200px) and (min-width:2900px) {
+    .imagenLogo {
+        position: relative;
+        right: 2000px;
+    }
+}
+
+@media (max-width:2900px) and (min-width:2700px) {
+    .imagenLogo {
+        position: relative;
+        right: 1850px;
+    }
+}
+
+@media (max-width:2700px) and (min-width:2500px) {
+    .imagenLogo {
+        position: relative;
+        right: 1700px;
+    }
+}
+
+@media (max-width:2500px) and (min-width:2300px) {
+    .imagenLogo {
+        position: relative;
+        right: 1550px;
+    }
+}
+
+@media (max-width:2300px) and (min-width:2000px) {
+    .imagenLogo {
+        position: relative;
+        right: 1000px;
+    }
+}
+
+@media (max-width:2000px) and (min-width:1800px) {
+    .imagenLogo {
+        position: relative;
+        right: 900px;
+    }
+}
+
+@media (max-width:1800px) and (min-width:1600px) {
+    .imagenLogo {
+        position: relative;
+        right: 700px;
+    }
+
+}
+
+@media (max-width:1600px) and (min-width:1410px) {
+    .imagenLogo {
+        position: relative;
+        right: 600px;
+    }
+}
+
+
+@media (max-width:1410px) and (min-width:1310px) {
+    .imagenLogo {
+        position: relative;
+        right: 450px;
+    }
+}
+
+@media (max-width:1310px) and (min-width:1200px) {
+    .imagenLogo {
+        position: relative;
+        right: 350px;
+    }
+
+}
+
+@media (max-width:1200px) {
+    .musculos {
+    padding-bottom: 5.5em;
+}
+
+}
+
+@media (min-width:992px){
+    .imgEj {
+    max-width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+}
+h1{
+    padding-bottom: 30px;
+}
+}
+
+
+@media (max-width:1200px) {
+    .imagenLogo {
+        display: none;
+    }
+    .home{
+        display: inline!important;
+    }
+}
+
+@media (min-width:1200px) {
+    .imagenLogo {
+        max-width: 100px;
+    }
+}
+
+@media (max-width:500px){
+    .card{
+        margin-top: 150px!important;
+    }
+}
+
+.opciones {
+    width: 145px!important;
+}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('rutinaActual') }}
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('rutinaActual') }}
+{% endblock %}
+{% block title %}
+	Rutina Actual
+{% endblock %}
+
+{% block body %}
+	<nav class="nav">
+		<a class="nav-link active" aria-current="page" href="{{ path('app_gym',{userName:userName}) }}" style="color:yellow">Home</a>
+		<a class="nav-link" href="{{ path('mostrarRutinaActual',{userName:userName}) }}" style="color:yellow">Rutina actual</a>
+		<a class="nav-link" href="{{ path('visualizarRutinas',{userName:userName}) }}" style="color:yellow">Visualizar Rutinas</a>
+		<a class="nav-link" href="{{ path('logout') }}" style="color:yellow">Cerrar sesión</a>
+		<div class=" pt-2">
+			<button class="config" id="{{ isAdmin ? 'admin' : 'not_admin' }}" style="background-color:transparent;border:0px">⚙️</button>
+			<select onchange="window.location.href=this.value;" hidden class="opciones" style="border:0px">
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Añadir nuevo administrador</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Borrar usuarios</option>
+				<option value="{{ path('administrarUsuarios',{userName:userName}) }}">Actualizar usuarios</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nuevo ejercicio</option>
+				<option value="{{ path('administrarMaterial',{userName:userName}) }}">Añadir nueva máquina</option>
+			</select>
+		</div>
+	</nav>
+	<h1>Rutina Actual:{{ fecha|date("d/m/Y") }}</h1>
+	<div class="container">
+    <div class="row">
+        {% for ej in ejercicios %}
+            <div class="col-md-5 col-12 card">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>{{ ej.ejercicio.nombreEjercicio }}</h3>
+                        <p><span style="font-weight:bold">Peso: </span>{{ ej.peso }}</p>
+                        <p><span style="font-weight:bold">Series: </span>{{ ej.series }}</p>
+                        <p><span style="font-weight:bold">Repeticiones por serie: </span> {{ ej.repeticionesPorSerie }}</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="/img/{{ ej.ejercicio.maquina.imagen }}" class="col-12">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <p class="text-center">
+        <button class="finalizarRutina">Finalizar Rutina</button>
+    </p>
+</div>
+{% endblock %}
